@@ -1,0 +1,13 @@
+{
+  "name": "ionicbricksstarter",
+  "private": "true",
+  "devDependencies": {
+    "ionic": "driftyco/ionic-bower#1.0.0-rc.0",
+    "ngCordova": "latest",
+    "twentysteps-angularjs-bundle": "ssh://git@stash.20steps.de:7999/bric/angularjs.git",
+    "underscore": "latest",
+    "moment": "latest",
+    "livestampjs": "latest",
+    "angular-youtube-mb": "latest"
+  }
+}

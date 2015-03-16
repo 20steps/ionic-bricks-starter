@@ -1,0 +1,54 @@
+<ion-view view-title="Schools" delegate-handle="myScrollDelegateHandle">
+  <ion-content>
+    <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="load()">
+    </ion-refresher>
+    <form>
+      <div class="query">
+        <label>
+          <input type="text" name="query" ng-model="search.query" ng-change="queryChanged()" placeholder="Query">
+        </label>
+        <input type="submit" value="Search" ng-click="load()">
+        <input type="submit" value="Show destinations" ng-click="showDestinations()">
+      </div>
+    </form>
+    <div class="schools" ng-if="search.query!='' && search.loading==false">
+      <div class="statistics">
+        Found {{ found.statistics.hitCount }} schools in {{ found.statistics.duration |  number: 1 }}s for {{ search.query }}
+      </div>
+      <ion-list ng-repeat="school in found.hits">
+        <ion-item class="item item-icon-left" type="item-text-wrap" ng-href="#/tab/schools/{{ school.slug }}">
+          <i class="icon ion-university"></i>
+          <h2>{{ school.name }}</h2>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div class="cities" ng-if="search.query=='' && search.loading==false">
+      <div class="statistics">
+        Found {{ found.groupings.city_group.statistics.groupCount }} cities with {{ found.groupings.city_group.statistics.hitCount }} schools in {{ found.statistics.duration |  number: 1 }}s
+      </div>
+      <ion-list ng-repeat="city in found.groupings.city_group.groups">
+          <ion-item class="item thumbnail-left" type="item-text-wrap">
+            <img src="http://languagescanada.ca/wp-content/uploads/sites/29/2015/02/Languages-Canada_new-logo_2.png" ng-if="!news.featuredImage.thumbnail.url">
+            <img2 ng-src="{{ city.found_extra.cityslider.images[0]">
+            <h2>{{ city.name }}</h2>
+            <p ng-bind-html="city.found_extra.cityslider.excerpt"></p>
+            <p>{{ city.found_extra.cityslider.province }}</p>
+            <ion-list ng-repeat="school in city.hits">
+                <ion-item class="item item-icon-left" type="item-text-wrap">
+                    <i class="icon ion-university"></i>
+                    <a ng-href="#/tab/schools/{{ school.slug }}">{{ school.title_highlighted }}</a>
+                </ion-item>
+            </ion-list>
+          </ion-item>
+      </ion-list>
+    </div>
+
+    <ion-infinite-scroll-off
+        ng-if-off="moreToLoad()"
+        on-infinite-off="loadMore()"
+        distance="1%">
+    </ion-infinite-scroll-off>
+  </ion-content>
+</ion-view>

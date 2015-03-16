@@ -1,0 +1,14 @@
+<ion-view view-title="{{ video.snippet.title }}">
+  <ion-content class="padding">
+    <ion-refresher
+            pulling-text="Pull to refresh..."
+            on-refresh="load()">
+    </ion-refresher>
+    <h2>{{ video.snippet.title }}</h2>
+    <p>{{ video.snippet.description }}</p>
+    <p><span data-livestamp="{{ video.snippet.publishedAt }}"></span></p>
+    <div ng-if="video" class="embed-responsive embed-responsive-16by9">
+      <youtube-video video-id="video.id" player-vars="youTubePlayerVars" player-width="'100%'" player-height="'300px'"></youtube-video>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,26 @@
+<ion-view view-title="{{ trivia.title }}">
+  <ion-content class="padding">
+    <ion-refresher
+            pulling-text="Pull to refresh..."
+            on-refresh="load()">
+    </ion-refresher>
+      <div class="list item">
+          <ion-item class="item item-icon-left" type="item-text-wrap">
+              <i class="icon ion-help-circled" ng-if="trivia.solved==false"></i>
+              <i class="icon ion-checkmark-circled" ng-if="trivia.solved"></i>
+              <h2>{{ trivia.title }}</h2>
+              <p><span data-livestamp="{{ trivia.date }}"></span></p>
+          </ion-item>
+      </div>
+        <form novalidate>
+            <div ng-repeat="answer in trivia.trivia.answers">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="answer" ng-model="$parent.answeredIndex" ng-value="answer.index">&nbsp;Antwort {{ answer.index }}: <strong>{{ answer.text }}</strong>
+                    </label>
+                </div>
+            </div>
+            <input type="submit" ng-click="answer(answeredIndex)" value="Answer" />
+        </form>
+  </ion-content>
+</ion-view>

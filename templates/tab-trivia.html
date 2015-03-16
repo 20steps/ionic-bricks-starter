@@ -1,0 +1,17 @@
+<ion-view view-title="Trivia">
+  <ion-content>
+    <ion-refresher
+            pulling-text="Pull to refresh..."
+            on-refresh="load()">
+    </ion-refresher>
+    <div class="list card">
+      <ion-item class="item item-icon-left" ng-repeat="trivia in nodes" type="item-text-wrap" ng-href="#/tab/trivia/{{ trivia.slug }}">
+        <i class="icon ion-help-circled" ng-if="trivia.solved==false"></i>
+        <i class="icon ion-checkmark-circled" ng-if="trivia.solved"></i>
+        <h2>{{ trivia.title }}</h2>
+        <p><span data-livestamp="{{ trivia.date }}"></span></p>
+      </ion-item>
+    </div>
+    <div><button ng-click="clearAllTriviaSolved()">Reset score</button></div>
+  </ion-content>
+</ion-view>

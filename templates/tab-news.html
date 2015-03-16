@@ -1,0 +1,17 @@
+<ion-view view-title="News">
+  <ion-content>
+    <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="load()">
+    </ion-refresher>
+    <ion-list>
+      <ion-item class="item item-thumbnail-left" ng-repeat="news in nodes" type="item-text-wrap" ng-href="#/tab/news/{{ news.slug }}">
+        <img ng-src="{{ news.featuredImage.thumbnail.url }}" ng-if="news.featuredImage.thumbnail.url">
+        <img src="http://languagescanada.ca/wp-content/uploads/sites/29/2015/02/Languages-Canada_new-logo_2.png" ng-if="!news.featuredImage.thumbnail.url">
+        <h2>{{ news.title }}</h2>
+        <p>{{ news.excerpt }}</p>
+        <p><span data-livestamp="{{ news.date }}"></span></p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

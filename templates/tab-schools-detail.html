@@ -1,0 +1,10 @@
+<ion-view view-title="{{ school.title }}">
+  <ion-content class="padding">
+    <ion-refresher
+            pulling-text="Pull to refresh..."
+            on-refresh="load()">
+    </ion-refresher>
+    <h2>{{ school.title }}</h2>
+    <a ng-href="{{ school.school.homepage_url }}" class="inAppBrowser">Homepage</a>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,13 @@
+{
+  "plugins": [
+    "org.apache.cordova.device",
+    "org.apache.cordova.console",
+    "https://github.com/brodysoft/Cordova-SQLitePlugin.git",
+    "org.apache.cordova.contacts",
+    "org.apache.cordova.geolocation",
+    "org.apache.cordova.inappbrowser",
+    "org.apache.cordova.statusbar",
+    "org.apache.cordova.vibration",
+    "com.ionic.keyboard"
+  ]
+}

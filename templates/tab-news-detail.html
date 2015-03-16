@@ -1,0 +1,15 @@
+<ion-view view-title="{{ news.title }}">
+  <ion-content class="padding">
+    <ion-refresher
+            pulling-text="Pull to refresh..."
+            on-refresh="load()">
+    </ion-refresher>
+    <h1>{{ news.title }}</h1>
+    <p><span data-livestamp="{{ news.date }}"></span></p>
+    <img ng-src="{{ news.featuredImage.medium.url }}" ng-if="news.featuredImage.medium.url">
+    <div class="inAppBrowser">
+        <p><a href="http://20steps.de">Testlink</a></p>
+        <div class="news-content" ng-bind-html="news.content"/>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta name="format-detection" content="telephone=no"/>
+
+    <title></title>
+
+    <!-- compiled css output -->
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <!-- has to be patched, cp. https://github.com/angular/angular.js/issues/9128 -->
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="lib/ngCordova/dist/ng-cordova.min.js"></script>
+    <script src="cordova.js"></script>
+
+    <!-- Libs (managed via bower) -->
+    <script src="lib/twentysteps-angularjs-bundle/Resources/public/dist/20steps-angularjs-ionic.js"></script>
+    <script src="lib/underscore/underscore-min.js"></script>
+    <script src="lib/moment/min/moment.min.js"></script>
+    <script src="lib/moment/locale/de.js"></script>
+    <script src="lib/moment/locale/pt.js"></script>
+    <script src="lib/moment/locale/fr.js"></script>
+    <script src="lib/livestampjs/livestamp.min.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="lib/angular-youtube-mb/dist/angular-youtube-embed.min.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app/app.js"></script>
+    <script src="js/app/config.js"></script>
+    <script src="js/app/translations.js"></script>
+    <script src="js/app/uiRouter.js"></script>
+
+    <!-- directives -->
+    <script src="js/directives/loadScriptDirective.js"></script>
+    <script src="js/directives/collapseBox.js"></script>
+    <script src="js/directives/asyncPagesRenderer.js"></script>
+
+    <!-- services -->
+    <script src="js/services/youTubeServiceHelper.js"></script>
+    <script src="js/services/youTubeService.js"></script>
+    <script src="js/services/triviaService.js"></script>
+
+    <!-- controllers -->
+    <script src="js/controllers/AppStartController.js"></script>
+    <script src="js/controllers/NewsController.js"></script>
+    <script src="js/controllers/NewsDetailController.js"></script>
+    <script src="js/controllers/VideosController.js"></script>
+    <script src="js/controllers/VideosDetailController.js"></script>
+    <script src="js/controllers/TriviaController.js"></script>
+    <script src="js/controllers/TriviaDetailController.js"></script>
+    <script src="js/controllers/SchoolsController.js"></script>
+    <script src="js/controllers/SchoolsDetailController.js"></script>
+
+    <!-- external scripts -->
+    <script src="http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+    <script type="text/javascript">
+      var googleApiClientReady = function() {
+        window.setTimeout(function(){ window.initYouTubeService(); }, 2000);
+
+      }
+    </script>
+    <script src="http://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+
+    <!-- inject google analytics here (managed by bricksTrackingService -->
+    <script bricks-basic-control-ga-snippet></script>
+
+    <!-- use inAppBrowser for links if anchor itself or any parent has class 'inAppBrowser' -->
+    <script>
+      document.onclick = function (e) {
+        e = e ||  window.event;
+        var element = e.target || e.srcElement;
+        if (element.className == 'inAppBrowser' || $(element).closest('.inAppBrowser').length) {
+          window.open(element.href, "_blank", "location=yes");
+          return false; // prevent default action and stop event propagation
+        }
+      };
+    </script>
+
+  </head>
+  <body ng-app="starter">
+    <!--
+      The nav bar that will be updated as we navigate between views.
+    -->
+    <ion-nav-bar class="bar-positive">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+    </ion-nav-bar>
+    <!--
+      The views will be rendered in the <ion-nav-view> directive below
+      Templates are in the /templates folder (but you could also
+      have templates inline in this html file if you'd like).
+    -->
+    <ion-nav-view></ion-nav-view>
+  </body>
+</html>
