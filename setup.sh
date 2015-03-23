@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 echo "Completing setup of Bricks based ionic app ..."
-INSTALL_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd );
-cd $INSTALL_DIR/..;
+INSTALL_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+cd $INSTALL_DIR/..
 
 echo "Updating index.html ..."
 cp www/skeleton/index.html www/index.html
@@ -33,5 +33,10 @@ echo "Commiting initial state ..."
 git add .
 git commit -am "Initial commit"
 
-echo "Starting iOS simulator with livereload ...";
-ionic run ios --livereload
+if [ "$(uname)" == "Darwin" ]; then
+    echo "Starting iOS simulator with livereload ..."
+    ionic run ios --livereload
+else
+    echo "Starting app in local browser ..."
+    ionic serve
+fi
