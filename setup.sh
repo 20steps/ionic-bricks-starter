@@ -5,7 +5,7 @@ INSTALL_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd );
 cd $INSTALL_DIR/..;
 
 echo "Updating index.html ..."
-cp skeleton/index.html www/index.html
+cp www/skeleton/index.html www/index.html
 
 echo "Updating bower.json ..."
 mv -f www/bower.json bower.json
@@ -23,11 +23,11 @@ ionic browser add crosswalk
 
 echo "Initializing git repository ..."
 git init
-cp skeleton/.gitignore .
+cp www/skeleton/.gitignore .
 
 echo "Cleaning up ..."
 rm -f www/setup.sh
-rm -rf skeleton
+rm -rf www/skeleton
 
 echo "Commiting initial state ..."
 git add .
