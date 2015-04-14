@@ -219,7 +219,10 @@ If you want to debug your app on an android device, first make sure that you hav
 
 ## Crosswalk and Whitelisting
 After adding the crosswalk browser to your project, there may be some problems with whitelisting. It could be solved by adding the cordova-plugin-whitelist plugin. Just type
-$ ionic plugin add https://github.com/apache/cordova-plugin-whitelist and follow the description on the plugin page (https://github.com/apache/cordova-plugin-whitelist). You have to whitelist some URLs.
+```bash
+$ ionic plugin add https://github.com/apache/cordova-plugin-whitelist
+```
+and follow the description on the plugin page (https://github.com/apache/cordova-plugin-whitelist). You have to whitelist some URLs.
 E.g.: If you want to whitelist all URLs simply add the following three lines to your config.xml.
 ```bash
 <allow-navigation href="*" />
